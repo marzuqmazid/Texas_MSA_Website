@@ -162,3 +162,81 @@
     transform: scale(1.1);
     background-color: white;
 }
+
+/* ── Mobile Responsive ── */
+@media screen and (max-width: 768px) {
+
+    /* Stack the two halves vertically */
+    .horizontal-split {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .left-half,
+    .right-half {
+        width: 100%;
+        height: auto;
+        padding: 2rem 1.25rem;
+    }
+
+    .left-half {
+        padding-bottom: 1rem;
+    }
+
+    .text-content {
+        max-width: 100%;
+    }
+
+    .text-content h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .text-content p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Undo the scale(1.4) on the donation form — it causes overflow on mobile */
+    #b1c531f5-20cf-426e-add2-6d9427366a70 {
+        transform: scale(1);
+        width: 100%;
+    }
+
+    .right-content {
+        gap: 2.5rem;
+        width: 100%;
+    }
+
+    /* Smaller, finger-friendly button */
+    .bottomButton {
+        width: 220px;
+        height: 60px;
+        font-size: 1.1rem;
+        border-radius: 12px;
+    }
+
+    .button-container {
+        margin-top: 10px;
+        height: auto;
+        padding-bottom: 2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .text-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .text-content p {
+        font-size: 0.95rem;
+    }
+
+    .bottomButton {
+        width: 180px;
+        height: 52px;
+        font-size: 1rem;
+    }
+}
