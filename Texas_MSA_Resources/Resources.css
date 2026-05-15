@@ -133,3 +133,78 @@ p {
     transform: scale(1.1);
     background-color: white;
 }
+
+/* ── GroupMe section ── */
+.groupme-section {
+    text-align: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+.groupme-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.groupme-text {
+    flex: 1;
+    min-width: 0;        /* crucial — overrides browser default min-width */
+    max-width: 600px;
+    padding: 1%;
+    box-sizing: border-box;
+}
+
+.groupme-text p {
+    font-size: 1.75rem;
+}
+
+.groupme-image {
+    flex: 1;
+    min-width: 0;        /* crucial */
+    max-width: 500px;
+    box-sizing: border-box;
+}
+
+/* On mobile, stack vertically and ensure nothing overflows */
+@media screen and (max-width: 768px) {
+    .groupme-row {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .groupme-text,
+    .groupme-image {
+        width: 100%;
+        max-width: 100%;
+        flex: none;
+    }
+
+    .groupme-text p {
+        font-size: 1.1rem;
+    }
+
+    /* Fix oversized back button on mobile */
+    .bottomButton {
+        width: 220px;
+        height: 60px;
+        font-size: 1.1rem;
+        border-radius: 12px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .groupme-section {
+        padding: 24px 12px;
+    }
+
+    .bottomButton {
+        width: 180px;
+        height: 52px;
+        font-size: 1rem;
+    }
+}
