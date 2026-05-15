@@ -220,5 +220,47 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
+		<!-- Mobile scroll-reveal for officer tiles -->
+		<script>
+			(function() {
+				// Only run on touch/mobile devices
+				// The existing main.js already adds body.is-touch on touch devices;
+				// we wait for it, then set up the observer.
+				function setupScrollReveal() {
+					if (!document.body.classList.contains('is-touch')) return;
+
+					var articles = document.querySelectorAll('.tiles article');
+					if (!articles.length) return;
+
+					var observer = new IntersectionObserver(function(entries) {
+						entries.forEach(function(entry) {
+							if (entry.isIntersecting) {
+								entry.target.classList.add('is-revealed');
+							} else {
+								// Remove when scrolled out so re-entry feels fresh
+								entry.target.classList.remove('is-revealed');
+							}
+						});
+					}, {
+						// Trigger when 55% of the tile is visible — feels natural
+						threshold: 0.55
+					});
+
+					articles.forEach(function(article) {
+						observer.observe(article);
+					});
+				}
+
+				// main.js sets is-touch during DOMContentLoaded/load; run after that.
+				if (document.readyState === 'loading') {
+					document.addEventListener('DOMContentLoaded', function() {
+						// Small delay to let main.js finish adding is-touch
+						setTimeout(setupScrollReveal, 100);
+					});
+				} else {
+					setTimeout(setupScrollReveal, 100);
+				}
+			})();
+		</script>
 	</body>
 </html>
